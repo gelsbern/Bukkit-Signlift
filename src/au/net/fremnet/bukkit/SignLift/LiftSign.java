@@ -253,7 +253,7 @@ public class LiftSign {
 
 		Block block0 = target.getTargetBlock(loc, 0);
 		Boolean safe = false;
-		if (block0.getY() < 128) {
+		if (block0.getY() < block0.getWorld().getMaxHeight()) {
 			Block block1 = target.getTargetBlock(loc, 1);
 			loc.setY(block0.getY());
 			safe = this.safeBlock(block0) && this.safeBlock(block1);
