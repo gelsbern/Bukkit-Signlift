@@ -2,6 +2,7 @@ name: SignLift
 main: au.net.fremnet.bukkit.SignLift.SignLift
 website: http://fremnet.net/
 version: 1.22
+api-version: 1.13
 permissions:
     signlift.*:
         description: Gives access to all SignLift privileges

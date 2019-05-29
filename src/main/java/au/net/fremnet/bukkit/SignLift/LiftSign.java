@@ -24,7 +24,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
-
+import org.bukkit.ChatColor;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -118,8 +118,9 @@ public class LiftSign {
 		
 		this.block = state.getBlock();
 		this.sign = (Sign)state;
-		
-		String line = this.sign.getLine(1).toString();
+
+		String line = ChatColor.stripColor(this.sign.getLine(1).toString());
+                
 		
 		if (line.length() < 3)
 			throw new NotASignLiftException();
@@ -287,28 +288,28 @@ public class LiftSign {
 		switch (block.getType()) {
 		case AIR:
 		case BROWN_MUSHROOM:
-		case CROPS:
+		case LEGACY_CROPS:
 		case DEAD_BUSH:
-		case DIODE_BLOCK_OFF:
-		case DIODE_BLOCK_ON:
-		case GLOWING_REDSTONE_ORE:
+		case LEGACY_DIODE_BLOCK_OFF:
+		case LEGACY_DIODE_BLOCK_ON:
+		case LEGACY_GLOWING_REDSTONE_ORE:
 		case LADDER:
 		case LEVER:
-		case LONG_GRASS:
+		case LEGACY_LONG_GRASS:
 		case RED_MUSHROOM:
-		case RED_ROSE:
+		case LEGACY_RED_ROSE:
 		case REDSTONE_ORE:
-		case SIGN:
-		case SIGN_POST:
-		case STATIONARY_WATER:
+		case LEGACY_SIGN:
+		case LEGACY_SIGN_POST:
+		case LEGACY_STATIONARY_WATER:
 		case STONE_BUTTON:
-		case STONE_PLATE:
-		case SUGAR_CANE_BLOCK:
-		case TORCH:
-		case WALL_SIGN:
-		case WATER:
-		case WOOD_PLATE:
-		case YELLOW_FLOWER:
+		case LEGACY_STONE_PLATE:
+		case LEGACY_SUGAR_CANE_BLOCK:
+		case LEGACY_TORCH:
+		case LEGACY_WALL_SIGN:
+		case LEGACY_WATER:
+		case LEGACY_WOOD_PLATE:
+		case LEGACY_YELLOW_FLOWER:
 			return true;
 		default:
 			return false;
@@ -334,7 +335,7 @@ public class LiftSign {
 			Block block = world.getBlockAt(x, y1, z);
 			BlockState blockState = block.getState();
 			if (blockState instanceof Sign) {
-				String line = ((Sign)blockState).getLine(1);
+				String line = ChatColor.stripColor(((Sign)blockState).getLine(1));
 				if (line.length() > 2) {
 					line = line.substring(1, line.length()-1);
 					if (line.equalsIgnoreCase(plugin.getLiftString()) || line.equalsIgnoreCase(plugin.getLiftUpString()) || line.equalsIgnoreCase(plugin.getLiftDownString())) {

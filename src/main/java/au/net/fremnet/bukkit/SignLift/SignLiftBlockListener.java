@@ -121,7 +121,7 @@ public class SignLiftBlockListener implements Listener {
 			player.sendMessage(plugin.getDeniedCreate());
 			event.setCancelled(true);
 			block.setType(Material.AIR);
-			block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.SIGN, 1));
+			block.getWorld().dropItemNaturally(block.getLocation(), new ItemStack(Material.LEGACY_SIGN, 1));
 		}
 	}
 
